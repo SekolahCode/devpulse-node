@@ -5,6 +5,8 @@
  * shape, mirroring the structure used by the browser SDK.
  */
 
+const SDK_VERSION = 'devpulse-node/1.0.0';
+
 /**
  * @param {Error} error
  * @returns {Array<{file?: string, line?: number, function?: string}>}
@@ -53,6 +55,7 @@ function buildFromError(error, extra = {}) {
     },
     timestamp:   new Date().toISOString(),
     platform:    'node',
+    sdk_version: SDK_VERSION,
     ...extra,
   };
 }
@@ -69,8 +72,9 @@ function buildFromMessage(message, level = 'info', extra = {}) {
   return {
     level,
     message,
-    timestamp: new Date().toISOString(),
-    platform:  'node',
+    timestamp:   new Date().toISOString(),
+    platform:    'node',
+    sdk_version: SDK_VERSION,
     ...extra,
   };
 }
